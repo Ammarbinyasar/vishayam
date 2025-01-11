@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 168, 50, 189),
         body: Center(
             child: Text(
-          'native splash anuu',
+          'native splash hmm anuu',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         )),
       ),
