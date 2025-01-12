@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Homepage(),
+    ));
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Color.fromARGB(255, 168, 50, 189),
-        body: Center(
-            child: Text(
-          'native splash hmm anuu',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        )),
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+          Color(0xFFFFFF).withOpacity(1.0),
+          Color(0x999999).withOpacity(1.0)
+        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
       ),
     );
   }
