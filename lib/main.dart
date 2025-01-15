@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
+import 'authentication/login1.dart';
 
-void main() => runApp(MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Homepage(),
-    ));
+void main() {
+  runApp(const MyApp());
+}
 
-class Homepage extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Color(0xFFFFFF).withOpacity(1.0),
-          Color(0x999999).withOpacity(1.0)
-        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-      ),
+    return MaterialApp(
+      title: 'flutter demo',
+      home: loginscreen(),
     );
   }
 }
