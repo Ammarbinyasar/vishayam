@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return MaterialApp(
-      title: 'flutter demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Softlocker',
       home: loginscreen(),
     );
   }

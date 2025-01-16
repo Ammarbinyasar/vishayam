@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vishayam/authentication/reset.dart';
 
 class CreateNewPassword extends StatelessWidget {
   const CreateNewPassword({super.key});
@@ -25,7 +26,7 @@ class CreateNewPassword extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Container(
               width: double.infinity,
-              height: 650,
+              height: 600,
               decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Color(0x0092e1e2).withOpacity(1.0),
@@ -194,7 +195,14 @@ class CreateNewPassword extends StatelessWidget {
                     height: 40,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => changed(),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: const Color(0xFFFFFF).withOpacity(1.0),
                       backgroundColor: const Color(0x0D4671).withOpacity(1.0),

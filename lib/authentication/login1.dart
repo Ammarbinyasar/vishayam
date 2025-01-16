@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:vishayam/authentication/forgotopassword.dart';
+import 'package:vishayam/authentication/verify.dart';
+import 'package:vishayam/create/register.dart';
+import 'package:vishayam/authentication/verify.dart';
 
 class loginscreen extends StatelessWidget {
   const loginscreen({super.key});
@@ -41,7 +44,7 @@ class loginscreen extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             child: Padding(
-              padding: const EdgeInsets.only(top: 125),
+              padding: const EdgeInsets.only(top: 70),
               child: Column(children: [
                 Image.asset(
                   'assets/login/logo.png',
@@ -255,7 +258,13 @@ class loginscreen extends StatelessWidget {
                               height: 10,
                             ),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Verify()),
+                                );
+                              },
                               style: ElevatedButton.styleFrom(
                                   foregroundColor:
                                       const Color(0xFFFFFF).withOpacity(1.0),
@@ -309,7 +318,12 @@ class loginscreen extends StatelessWidget {
 
                 // Register Now
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Register()),
+                    );
+                  },
                   child: RichText(
                     text: TextSpan(
                       text: "Don't have an account? ",

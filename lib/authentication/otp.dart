@@ -25,7 +25,7 @@ class OtpVerification extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Container(
               width: double.infinity,
-              height: 650,
+              height: 620,
               decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Color(0x0092e1e2).withOpacity(1.0),
