@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:vishayam/home/homepage.dart';
 import 'package:vishayam/onboarding/onboard1.dart';
 import 'package:vishayam/onboarding/onboard2.dart';
 import 'package:vishayam/onboarding/onboard3.dart';
+import 'package:vishayam/home/homepage.dart';
 
 class onboard extends StatefulWidget {
   const onboard({super.key});
@@ -15,6 +16,7 @@ class onboard extends StatefulWidget {
 class _onboardState extends State<onboard> {
   PageController _controller = PageController();
   bool onlast = false;
+  bool onfirst = false;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +24,7 @@ class _onboardState extends State<onboard> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-              Color(0x92E1E2).withOpacity(1.0),
-              Color(0x0D4671).withOpacity(1.0)
-            ])),
+            color: Color.fromARGB(0, 255, 255, 255).withOpacity(1.0),
             child: Stack(
               children: [
                 PageView(
@@ -34,6 +32,7 @@ class _onboardState extends State<onboard> {
                   onPageChanged: (index) {
                     setState(() {
                       onlast = (index == 2);
+                      onfirst = (index == 0);
                     });
                   },
                   children: [
@@ -58,37 +57,72 @@ class _onboardState extends State<onboard> {
               ],
             ),
           ),
-          Container(
-              alignment: Alignment(0, 0.75),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  GestureDetector(
-                      onTap: () {
-                        _controller.jumpToPage(2);
-                      },
-                      child: Text('skip')),
-                  SmoothPageIndicator(controller: _controller, count: 3),
-                  onlast
-                      ? GestureDetector(
-                          onTap: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Homepage(),
-                              ),
-                            );
-                          },
-                          child: Text('done'))
-                      : GestureDetector(
-                          onTap: () {
-                            _controller.nextPage(
-                                duration: Duration(seconds: 1),
-                                curve: Curves.easeInOut);
-                          },
-                          child: Text('next')),
-                ],
-              )),
+          Align(
+            alignment: Alignment(0, 0.75),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SmoothPageIndicator(
+                  controller: _controller,
+                  count: 3,
+                  effect: ExpandingDotsEffect(
+                    spacing: 11.0,
+                    radius: 20.0,
+                    dotHeight: 12,
+                    dotColor: Color(0x67A869).withOpacity(1.0),
+                    activeDotColor: Color(0x82D5DB).withOpacity(1.0),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Container(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment
+                        .spaceBetween, // Ensures the buttons are at the left and right
+                    children: [
+                      // Previous button always on the left
+                      onfirst
+                          ? SizedBox(
+                              width:
+                                  48) // Same width as IconButton to maintain alignment
+                          : IconButton(
+                              onPressed: () {
+                                _controller.previousPage(
+                                  duration: Duration(seconds: 1),
+                                  curve: Curves.easeInOut,
+                                );
+                              },
+                              icon: SvgPicture.asset('assets/onboard/prev.svg'),
+                            ),
+
+                      // Spacer to push buttons apart or ensure proper alignment
+                      onlast
+                          ? IconButton(
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Homepage(),
+                                  ),
+                                );
+                              },
+                              icon: SvgPicture.asset('assets/onboard/nex.svg'),
+                            )
+                          : IconButton(
+                              onPressed: () {
+                                _controller.nextPage(
+                                  duration: Duration(seconds: 1),
+                                  curve: Curves.easeInOut,
+                                );
+                              },
+                              icon: SvgPicture.asset('assets/onboard/nex.svg'),
+                            ), // Next button always on the right
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

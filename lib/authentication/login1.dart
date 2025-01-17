@@ -4,7 +4,6 @@ import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:vishayam/authentication/forgotopassword.dart';
 import 'package:vishayam/authentication/verify.dart';
 import 'package:vishayam/create/register.dart';
-import 'package:vishayam/authentication/verify.dart';
 
 class loginscreen extends StatelessWidget {
   const loginscreen({super.key});
